@@ -5,6 +5,7 @@ import re
 import socket
 import rospy
 from sensor_msgs.msg import Range
+from robotcar_msgs.msg import RelativeVelocity
 
 class RearToFSubscriber(object):
 
@@ -14,6 +15,7 @@ class RearToFSubscriber(object):
         # callback function.
         self.robot_host = robot_host
         self.sub = rospy.Subscriber(self.robot_host + '/time_of_flight/rear/distance', Range, self.callback)
+        self.velocitySub = rospy.Subscriber(self.robot_host + '/time_of_flight/rear/relative_velocity', RelativeVelocity, self.velocityCallback)
 
         # Initialize message variables.
         self.enable = False
@@ -27,17 +29,25 @@ class RearToFSubscriber(object):
     def start(self):
         self.enable = True
         self.sub = rospy.Subscriber(self.robot_host + '/time_of_flight/rear/distance', Range, self.callback)
+        self.velocitySub = rospy.Subscriber(self.robot_host + '/time_of_flight/rear/relative_velocity', RelativeVelocity, self.velocityCallback)
 
     def stop(self):
         """Turn off subscriber."""
         self.enable = False
         self.sub.unregister()
+        self.velocitySub.unregister()
 
     def callback(self, data):
         """Handle subscriber data."""
         # Simply print out values in our custom message.
         self.data = data
         msg = "Got type %s with FoV %s and Min-Range %s and Max-Range %s and measured Range %s" % (self.data.radiation_type, self.data.field_of_view, self.data.min_range, self.data.max_range, self.data.range)
+        rospy.loginfo(rospy.get_caller_id() + msg)
+
+    def velocityCallback(self, data):
+        """Handle subscriber data."""
+        # Simply print out values in our custom message.
+        msg = "Got type %s with FoV %s and Min-Range %s and Max-Range %s and measured Relative Velocity %s" % (data.radiation_type, data.field_of_view, data.min_range, data.max_range, data.relative_velocity)
         rospy.loginfo(rospy.get_caller_id() + msg)
 
 if __name__ == '__main__':

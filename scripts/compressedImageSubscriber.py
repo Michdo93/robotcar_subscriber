@@ -27,7 +27,7 @@ class CompressedImageSubscriber(object):
         # Create a subscriber with appropriate topic, custom message and name of
         # callback function.
         self.robot_host = robot_host
-        self.sub = rospy.Subscriber('/raspicam_node/image/compressed', CompressedImage, self.callback, queue_size = 1)
+        self.sub = rospy.Subscriber('/raspicam_node/robotcar/image/compressed', CompressedImage, self.callback, queue_size = 1)
 
         self.br = CvBridge()
         self.image = None
@@ -43,7 +43,7 @@ class CompressedImageSubscriber(object):
 
     def start(self):
         self.enable = True
-        self.sub = rospy.Subscriber('/raspicam_node/image/compressed', CompressedImage, self.callback, queue_size = 1)
+        self.sub = rospy.Subscriber('/raspicam_node/robotcar/image/compressed', CompressedImage, self.callback, queue_size = 1)
 
     def stop(self):
         """Turn off subscriber."""
@@ -57,15 +57,15 @@ class CompressedImageSubscriber(object):
         
 
         #### direct conversion to CV2 ####
-        #np_arr = np.fromstring(self.data.data, np.uint8)
-        #image_np = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+        np_arr = np.fromstring(self.data.data, np.uint8)
+        image_np = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
 
-        try:
-            img = self.br.compressed_imgmsg_to_cv2(data, 'bgr8')
-        except CvBridgeError as e:
-            print(e)
+        #try:
+        #    img = self.br.compressed_imgmsg_to_cv2(data, 'bgr8')
+        #except CvBridgeError as e:
+        #    print(e)
         
-        cv2.imshow('cv_img', img)
+        cv2.imshow('cv_img', image_np)
         cv2.waitKey(25)
         
 if __name__ == '__main__':

@@ -4,9 +4,13 @@ import sys
 import re
 import socket
 import rospy
-from std_msgs.msg import Float64
-from geometry_msgs.msg import Vector3
+from std_header_msgs.msg import Float64
+# from geometry_msgs.msg import Vector3
 from sensor_msgs.msg import Imu
+from robotcar_msgs.msg import Accelerometer
+from robotcar_msgs.msg import Gyroscope
+from robotcar_msgs.msg import Magnetometer
+from robotcar_msgs.msg import Orientation
 
 class ImuSubscriber(object):
 
@@ -15,22 +19,23 @@ class ImuSubscriber(object):
         # Create a subscriber with appropriate topic, custom message and name of
         # callback function.
         self.robot_host = robot_host
+
         self.imuSub = rospy.Subscriber(self.robot_host + '/imu', Imu, self.imuCallback)
         self.imuRawSub = rospy.Subscriber(self.robot_host + '/imu/raw', Imu, self.imuRawCallback)
 
-        self.accelSub = rospy.Subscriber(self.robot_host + '/imu/accelerometer', Vector3, self.accelerometerCallback)
-        self.accelRawSub = rospy.Subscriber(self.robot_host + '/imu/accelerometer/raw', Vector3, self.accelerometerRawCallback)
+        self.accelSub = rospy.Subscriber(self.robot_host + '/imu/accelerometer', Accelerometer, self.accelerometerCallback)
+        self.accelRawSub = rospy.Subscriber(self.robot_host + '/imu/accelerometer/raw', Accelerometer, self.accelerometerRawCallback)
 
-        self.gyroSub = rospy.Subscriber(self.robot_host + '/imu/gyroscope', Vector3, self.gyroscopeCallback)
-        self.gyroRawSub = rospy.Subscriber(self.robot_host + '/imu/gyroscope/raw', Vector3, self.gyroscopeRawCallback)
+        self.gyroSub = rospy.Subscriber(self.robot_host + '/imu/gyroscope', Gyroscope, self.gyroscopeCallback)
+        self.gyroRawSub = rospy.Subscriber(self.robot_host + '/imu/gyroscope/raw', Gyroscope, self.gyroscopeRawCallback)
 
-        self.magnetoSub = rospy.Subscriber(self.robot_host + '/imu/magnetometer', Float64, self.magnetometerCallback)
-        self.magnetoRawSub = rospy.Subscriber(self.robot_host + '/imu/magnetometer/raw', Vector3, self.magnetometerRawCallback)
+        self.magnetoSub = rospy.Subscriber(self.robot_host + '/imu/magnetometer', Magnetometer, self.magnetometerCallback)
+        self.magnetoRawSub = rospy.Subscriber(self.robot_host + '/imu/magnetometer/raw', Orientation, self.magnetometerRawCallback)
 
-        self.orientationSub = rospy.Subscriber(self.robot_host + '/imu/orientation', Vector3, self.orientationCallback)
-        self.orientationDegSub = rospy.Subscriber(self.robot_host + '/imu/orientation/degrees', Vector3, self.orientationDegreesCallback)
-        self.orientationRadSub = rospy.Subscriber(self.robot_host + '/imu/orientation/radians', Vector3, self.orientationRadiansCallback)
-        self.orientationNorthSub = rospy.Subscriber(self.robot_host + '/imu/orientation/north', Float64, self.orientationNorthCallback)
+        self.orientationSub = rospy.Subscriber(self.robot_host + '/imu/orientation', Orientation, self.orientationCallback)
+        self.orientationDegSub = rospy.Subscriber(self.robot_host + '/imu/orientation/degrees', Orientation, self.orientationDegreesCallback)
+        self.orientationRadSub = rospy.Subscriber(self.robot_host + '/imu/orientation/radians', Orientation, self.orientationRadiansCallback)
+        self.orientationNorthSub = rospy.Subscriber(self.robot_host + '/imu/orientation/north', Magnetometer, self.orientationNorthCallback)
         
         self.enable = False
 
@@ -63,19 +68,19 @@ class ImuSubscriber(object):
         self.imuSub = rospy.Subscriber(self.robot_host + '/imu', Imu, self.imuCallback)
         self.imuRawSub = rospy.Subscriber(self.robot_host + '/imu/raw', Imu, self.imuRawCallback)
 
-        self.accelSub = rospy.Subscriber(self.robot_host + '/imu/accelerometer', Vector3, self.accelerometerCallback)
-        self.accelRawSub = rospy.Subscriber(self.robot_host + '/imu/accelerometer/raw', Vector3, self.accelerometerRawCallback)
+        self.accelSub = rospy.Subscriber(self.robot_host + '/imu/accelerometer', Accelerometer, self.accelerometerCallback)
+        self.accelRawSub = rospy.Subscriber(self.robot_host + '/imu/accelerometer/raw', Accelerometer, self.accelerometerRawCallback)
 
-        self.gyroSub = rospy.Subscriber(self.robot_host + '/imu/gyroscope', Vector3, self.gyroscopeCallback)
-        self.gyroRawSub = rospy.Subscriber(self.robot_host + '/imu/gyroscope/raw', Vector3, self.gyroscopeRawCallback)
+        self.gyroSub = rospy.Subscriber(self.robot_host + '/imu/gyroscope', Gyroscope, self.gyroscopeCallback)
+        self.gyroRawSub = rospy.Subscriber(self.robot_host + '/imu/gyroscope/raw', Gyroscope, self.gyroscopeRawCallback)
 
-        self.magnetoSub = rospy.Subscriber(self.robot_host + '/imu/magnetometer', Float64, self.magnetometerCallback)
-        self.magnetoRawSub = rospy.Subscriber(self.robot_host + '/imu/magnetometer/raw', Vector3, self.magnetometerRawCallback)
+        self.magnetoSub = rospy.Subscriber(self.robot_host + '/imu/magnetometer', Magnetometer, self.magnetometerCallback)
+        self.magnetoRawSub = rospy.Subscriber(self.robot_host + '/imu/magnetometer/raw', Orientation, self.magnetometerRawCallback)
 
-        self.orientationSub = rospy.Subscriber(self.robot_host + '/imu/orientation', Vector3, self.orientationCallback)
-        self.orientationDegSub = rospy.Subscriber(self.robot_host + '/imu/orientation/degrees', Vector3, self.orientationDegreesCallback)
-        self.orientationRadSub = rospy.Subscriber(self.robot_host + '/imu/orientation/radians', Vector3, self.orientationRadiansCallback)
-        self.orientationNorthSub = rospy.Subscriber(self.robot_host + '/imu/orientation/north', Float64, self.orientationNorthCallback)
+        self.orientationSub = rospy.Subscriber(self.robot_host + '/imu/orientation', Orientation, self.orientationCallback)
+        self.orientationDegSub = rospy.Subscriber(self.robot_host + '/imu/orientation/degrees', Orientation, self.orientationDegreesCallback)
+        self.orientationRadSub = rospy.Subscriber(self.robot_host + '/imu/orientation/radians', Orientation, self.orientationRadiansCallback)
+        self.orientationNorthSub = rospy.Subscriber(self.robot_host + '/imu/orientation/north', Magnetometer, self.orientationNorthCallback)
 
     def stop(self):
         """Turn off subscriber."""
@@ -130,7 +135,7 @@ class ImuSubscriber(object):
 
     def magnetometerCallback(self, data):
         self.magnetoData = data
-        msg = "Got imu/magnetometer: North: %s" % self.magnetoData.data
+        msg = "Got imu/magnetometer: North: %s" % self.magnetoData.north
         rospy.loginfo(rospy.get_caller_id() + msg)
 
     def magnetometerRawCallback(self, data):
@@ -155,7 +160,7 @@ class ImuSubscriber(object):
 
     def orientationNorthCallback(self, data):
         self.orientationNorthData = data
-        msg = "Got imu/orientation/north: North: %s" % self.orientationNorthData.data
+        msg = "Got imu/orientation/north: North: %s" % self.orientationNorthData.north
         rospy.loginfo(rospy.get_caller_id() + msg)
 
 if __name__ == '__main__':
