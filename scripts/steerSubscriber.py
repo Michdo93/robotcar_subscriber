@@ -6,8 +6,11 @@ import socket
 import rospy
 import message_filters
 from robotcar_msgs.msg import Steer
-from std_header_msgs.msg import Int8
-from std_header_msgs.msg import Float32
+from robotcar_msgs.msg import ServoDeg
+from robotcar_msgs.msg import ServoIntervall
+from robotcar_msgs.msg import ServoIntervallDeg
+from robotcar_msgs.msg import ServoRange
+from robotcar_msgs.msg import ServoRangeDeg
 
 class SteerSubscriber(object):
 
@@ -62,7 +65,7 @@ class SteerSubscriber(object):
     def start(self):
         self.enable = True
 
-self.steerSub = rospy.Subscriber(self.robot_host + '/steer/get', Steer, self.steerCallback)
+        self.steerSub = rospy.Subscriber(self.robot_host + '/steer/get', Steer, self.steerCallback)
         self.steerDegSub = rospy.Subscriber(self.robot_host + '/steer/get/degree', ServoDeg, self.steerDegCallback)
         
         # it's much better to know how big the steering intervall is.
@@ -133,7 +136,7 @@ self.steerSub = rospy.Subscriber(self.robot_host + '/steer/get', Steer, self.ste
     def steerIntervallCallback(self, intervall, intervallDeg):
         """Handle subscriber data."""
         # Simply print out values in our custom message.
-        msg = "Got steering intervall %s and %s° (Degree)" % (intervall.intervall_pwm, intervallDeg.intervall_deg)
+        msg = "Got steering intervall %s and %s° (Degree)" % (intervall.intervall_pwm, intervallDeg.intervall_angle)
         rospy.loginfo(rospy.get_caller_id() + msg)
 
     def steerBordersCallback(self, minData, neutralData, maxData):

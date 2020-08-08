@@ -47,7 +47,7 @@ class RearUltrasonicSubscriber(object):
     def velocityCallback(self, data):
         """Handle subscriber data."""
         # Simply print out values in our custom message.
-        msg = "Got type %s with FoV %s and Min-Range %s and Max-Range %s and measured Relative Velocity %s" % (data.radiation_type, data.field_of_view, data.min_range, data.max_range, data.relative_velocity)
+        msg = "Got type %s with FoV %s and measured Relative Velocity %s" % (data.radiation_type, data.field_of_view, data.relative_velocity)
         rospy.loginfo(rospy.get_caller_id() + msg)
 
 if __name__ == '__main__':
