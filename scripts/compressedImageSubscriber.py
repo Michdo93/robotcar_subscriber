@@ -27,7 +27,7 @@ class CompressedImageSubscriber(object):
         # Create a subscriber with appropriate topic, custom message and name of
         # callback function.
         self.robot_host = robot_host
-        self.sub = rospy.Subscriber('/robotcar/raspicam/image/compressed', CompressedImage, self.callback, queue_size = 1)
+        self.sub = rospy.Subscriber(self.robot_host + '/raspicam/image/compressed', CompressedImage, self.callback, queue_size = 1)
 
         self.br = CvBridge()
         self.image = None
@@ -43,7 +43,7 @@ class CompressedImageSubscriber(object):
 
     def start(self):
         self.enable = True
-        self.sub = rospy.Subscriber('/robotcar/raspicam/image/compressed', CompressedImage, self.callback, queue_size = 1)
+        self.sub = rospy.Subscriber(self.robot_host + '/raspicam/image/compressed', CompressedImage, self.callback, queue_size = 1)
 
     def stop(self):
         """Turn off subscriber."""
