@@ -5,7 +5,7 @@ Gives an example how you can use Subscribers for receiving sensor informations f
 
 The String variable `robot_host` uses the hostname of one RobotCar. As example it could be `robotcar`.
 
-A robotcar_subscriber could be used as blue print for subscribing informations for a ADAS.
+A robotcar_subscriber could be used as blue print for subscribing informations for an ADAS.
 
 
 ## CompressedImageSubscriber Node
