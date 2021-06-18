@@ -10,6 +10,8 @@ A robotcar_subscriber could be used as blue print for subscribing informations f
 
 ## CompressedImageSubscriber Node
 
+![CompressedImageSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/compressedImageSubscriber.JPG)
+
 It subscribes the compressed image informations from the [raspicam_node](https://github.com/Michdo93/raspicam_node) respectively the raspicam.
 
 |                 Topic Address                |            Message Type       |
@@ -19,6 +21,8 @@ It subscribes the compressed image informations from the [raspicam_node](https:/
 You can run it with `rosrun robotcar_subscriber compressedImageSubscriber.py`
 
 ## FrontIRSubscriber Node
+
+![FrontIRSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/frontIRSubscriber.JPG)
 
 It subscribes informations from the FrontInfrared Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the front infrared sensor.
 
@@ -31,6 +35,8 @@ You can run it with `rosrun robotcar_subscriber frontIRSubscriber.py`
 
 ## FrontLeftUltrasonicSubscriber Node
 
+![FrontLeftUltrasonicSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/frontLeftUltrasonicSubscriber.JPG)
+
 It subscribes informations from the FrontLeftUltrasonic Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the left front ultrasonic sensor.
 
 |                       Topic Address                   |             Message Type        |
@@ -41,6 +47,8 @@ It subscribes informations from the FrontLeftUltrasonic Node of the [robotcar-pk
 You can run it with `rosrun robotcar_subscriber frontLeftUltrasonicSubscriber.py`
 
 ## FrontRightUltrasonicSubscriber Node
+
+![FrontRightUltrasonicSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/frontRightUltrasonicSubscriber.JPG)
 
 It subscribes informations from the FrontRightUltrasonic Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the right front ultrasonic sensor.
 
@@ -53,6 +61,8 @@ You can run it with `rosrun robotcar_subscriber frontRightUltrasonicSubscriber.p
 
 ## FrontTofSubscriber Node
 
+![FrontTofSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/frontToFSubscriber.JPG)
+
 It subscribes informations from the FrontTimeOfFlight Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the front time-of-flight sensor.
 
 |                       Topic Address                   |             Message Type        |
@@ -64,6 +74,8 @@ You can run it with `rosrun robotcar_subscriber frontToFSubscriber.py`
 
 ## FrontUltrasonicSubscriber Node
 
+![FrontUltrasonicSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/frontUltrasonicSubscriber.JPG)
+
 It subscribes informations from the FrontUltrasonic Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the front ultrasonic sensor.
 
 |                       Topic Address                   |             Message Type        |
@@ -74,6 +86,8 @@ It subscribes informations from the FrontUltrasonic Node of the [robotcar-pkg](h
 You can run it with `rosrun robotcar_subscriber frontUltrasonicSubscriber.py`
 
 ## ImuSubscriber Node
+
+![ImuSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/imuSubscriber.JPG)
 
 It subscribes informations from the Imu Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively from the Imu of the Sense HAT.
 
@@ -96,6 +110,8 @@ You can run it with `rosrun robotcar_subscriber imuSubscriber.py`
 
 ## MeteorologicalSubscriber Node
 
+![MeteorologicalSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/meteorologicalSubscriber.JPG)
+
 It subscribes informations from the Meteorological Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the meteorological sensors of the Sense HAT.
 
 |                       Topic Address                   |             Message Type        |
@@ -107,6 +123,8 @@ It subscribes informations from the Meteorological Node of the [robotcar-pkg](ht
 You can run it with `rosrun robotcar_subscriber meteorologicalSubscriber.py`
 
 ## MotorSubscriber Node
+
+![MotorSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/motorSubscriber.JPG)
 
 It subscribes informations from the Motor Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the motor.
 
@@ -123,6 +141,8 @@ You can run it with `rosrun robotcar_subscriber motorSubscriber.py`
 
 ## RearIRSubscriber Node
 
+![RearIRSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/rearIRSubscriber.JPG)
+
 It subscribes informations from the RearInfrared Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the rear infrared sensor.
 
 |                       Topic Address                   |             Message Type        |
@@ -133,6 +153,8 @@ It subscribes informations from the RearInfrared Node of the [robotcar-pkg](http
 You can run it with `rosrun robotcar_subscriber rearIRSubscriber.py`
 
 ## RearLeftUltrasonicSubscriber Node
+
+![RearLeftUltrasonicSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/rearLeftUltrasonic.JPG)
 
 It subscribes informations from the RearLeftUltrasonic Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the left rear ultrasonic sensor.
 
@@ -145,6 +167,8 @@ You can run it with `rosrun robotcar_subscriber rearLeftUltrasonicSubscriber.py`
 
 ## RearRightUltrasonicSubscriber Node
 
+![RearRightUltrasonicSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/rearRightUltrasonic.JPG)
+
 It subscribes informations from the RearRightUltrasonic Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the right rear ultrasonic sensor.
 
 |                       Topic Address                   |             Message Type        |
@@ -155,6 +179,8 @@ It subscribes informations from the RearRightUltrasonic Node of the [robotcar-pk
 You can run it with `rosrun robotcar_subscriber rearRightUltrasonicSubscriber.py`
 
 ## RearToFSubscriber Node
+
+![RearToFSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/rearToFSubscriber.JPG)
 
 It subscribes informations from the RearTimeOfFlight Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the rear time-of-flight sensor.
 
@@ -167,6 +193,8 @@ You can run it with `rosrun robotcar_subscriber rearToFSubscriber.py`
 
 ## RearUltrasonicSubscriber Node
 
+![RearUltrasonicSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/rearUltrasonic.JPG)
+
 It subscribes informations from the RearUltrasonic Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the rear ultrasonic sensor.
 
 |                       Topic Address                   |             Message Type        |
@@ -177,6 +205,8 @@ It subscribes informations from the RearUltrasonic Node of the [robotcar-pkg](ht
 You can run it with `rosrun robotcar_subscriber rearUltrasonicSubscriber.py`
 
 ## SteerSubscriber Node
+
+![SteerSubscriber](https://raw.githubusercontent.com/Michdo93/robotcar_subscriber/master/steerSubscriber.JPG)
 
 It subscribes informations from the Steer Node of the [robotcar-pkg](https://github.com/Michdo93/robotcar-pkg) respectively the steer servo motor.
 
